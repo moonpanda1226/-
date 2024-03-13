@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>다 따라갔다 ㅎㅎ</title>
+</head>
+<body>
+	<h1>메뉴 페이지 입니다</h1>
+	여기서 메뉴에 보여줄 순서를 지정할 수 있습니다.
+	
+	<table border="1">
+		<tr>
+			<th>카테고리번호</th>
+			<th>카테고리이름</th>
+			<th>비고</th>
+		</tr>
+		<tr th:each="m : ${menu}">
+			<td th:text="${m.cate}"></td>
+			<td th:text="${m.catename}"></td>
+			<td th:text="${m.comment}"></td>
+		</tr>
+	</table>
+	
+	<form action="./menu" method="post">
+		<input type="number" name="cate" placeholder="카테고리 번호">
+		<input type="text" name="catename" placeholder="카테고리 이름">
+		<input type="text" name="comment" placeholder="설명을 적어주세요">
+		<button type="submit">추카하기</button>
+	</form>
+</body>
+</html>

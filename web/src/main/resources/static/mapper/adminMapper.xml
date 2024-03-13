@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sh.web.dao.AdminDAO">
+
+	<select id="menu" resultType="Map">
+	SELECT cate, catename, comment
+	FROM menu
+	</select>
+	
+	<insert id="menuInsert" parameterType="Map">
+		INSERT INTO menu VALUES(#{cate}, #{catename}, #{comment})
+	</insert>
+</mapper>
+

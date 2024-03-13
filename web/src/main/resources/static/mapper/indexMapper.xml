@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sh.web.dao.IndexDAO">
+
+	<select id="menu" resultType="Map">
+		SELECT cate, catename FROM menu	
+	</select>
+	
+	
+	<select id="freeboard" parameterType="int" resultType="Map">
+		SELECT mtno, mttitle, mtdate,
+		mtip, mtdel, mtread, mtcate, mname 
+		FROM multiboard mt JOIN member m ON mt.mno=m.mno
+		WHERE mtcate=#{cate} AND mtdel=1 
+		LIMIT 0, 10 
+	</select>
+	
+	<select id="special" parameterType="int" resultType="Map">
+		SELECT mtno, mttitle, mtdate,
+		mtip, mtdel, mtread, mtcate, mname 
+		FROM multiboard mt JOIN member m ON mt.mno=m.mno
+		WHERE mtcate=#{cate} AND mtdel=1 
+		LIMIT 0, 10 
+	</select>
+	
+	<select id="detail" parameterType="int" resultType="Map"> 
+		SELECT mtno,
+		mttitle, mtcontent, mname, mtdate, mtip, mid, mtip, mtread, mtcate
+		FROM multiboard mt JOIN member m ON mt.mno=m.mno
+		WHERE mtno=#{no} 
+	</select>
+	
+	<insert id="write" parameterType="Map"> 
+		INSERT INTO multiboard
+		(mttitle, mtcontent, mtip, mtcate, mno) VALUES (#{title}, #{content},
+		#{ip}, #{cate}, (SELECT mno FROM member WHERE mid=#{mid})) 
+	</insert>
+	
+	<update id="postDel" parameterType="int"> 
+		UPDATE multiboard SET mtdel=0 
+		WHERE mtno=#{no} 
+	</update>
+	
+	<update id="postUpdate" parameterType="Map">
+		UPDATE multiboard SET mttitle=#{title}, mtcontent=#{content}
+		WHERE mtno=#{mtno} AND mno=(SELECT mno FROM member WHERE mid=#{mid}
+	</update>
+	
+	
+	<select id="getcateName" parameterType="int" resultType="String"> 
+		SELECT catename FROM menu WHERE cate=#{cate} 
+		
+	</select>
+	
+	
+</mapper>

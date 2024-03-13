@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+    <head>
+        <th:block th:insert="~{menu.html :: head}"></th:block>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <th:block th:insert="~{menu.html :: menu}"></th:block>
+        <!-- Mashead header-->
+        
+        <!-- Quote/testimonial aside-->
+        <aside class="text-center">
+            <div class="container px-5">
+            <h1>공공데이터 포털에서 데이터 가져오기</h1>
+            <div class="containal">
+   <table>
+                  <thead>
+                     <tr>
+                        <th>informCause</th>
+                        <th>imageUrl4</th>
+                        <th>informData</th>
+                        <th>imageUrl5</th>
+                        <th>informGrade</th>
+                        <th>imageUrl6</th>
+                        <th>informCode</th>
+                        <th>informOverall</th>
+                        <th>dataTime</th>
+                        <th>imageUrl1</th>
+                        <th>imageUrl2</th>
+                        <th>imageUrl3</th>
+                        <th>actionKnack</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr th:each="air : ${data}">
+                        <td th:text="${air.informCause}">informCause</td>
+                        <td><img th:src="${air.imageUrl4}"></td>
+                        <td th:text="${air.informData}">informData</td>
+                        <td><img th:src="${air.imageUrl5}"></td>
+                        <td th:text="${air.informGrade}">informGrade</td>
+                        <td><img th:src="${air.imageUrl6}"></td>
+                        <td th:text="${air.informCode}">informCode</td>
+                        <td th:text="${air.informOverall}">informOverall</td>
+                        <td th:text="${air.dataTime}">dataTime</td>
+                        <td><img th:src="${air.imageUrl1}"></td>
+                        <td><img th:src="${air.imageUrl2}"></td>
+                        <td><img th:src="${air.imageUrl3}"></td>
+                        <td th:text="${air.actionKnack}">actionKnack</td>
+                     </tr>
+                  </tbody>
+               </table>
+            	
+            </div>          	
+			
+            </div>
+        </aside>
+        <!-- App features section-->
+        
+        
+        <!-- Footer-->
+        <th:block th:insert="~{menu.html :: footer}"></th:block>
+        <!-- Feedback Modal-->
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
